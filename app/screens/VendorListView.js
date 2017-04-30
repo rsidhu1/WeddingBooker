@@ -29,7 +29,7 @@ export default class VendorListView extends Component {
   }
 
   //go to profile page
-  goToProfile = (vendorProfile) => {
+  goToProfile = vendorProfile => {
     this.props.navigation.navigate("VendorProfile", vendorProfile);
   };
 
@@ -41,9 +41,15 @@ export default class VendorListView extends Component {
         style={styles.vendorRow}
         onPress={() => this.goToProfile(rowData)}
       >
-        <Image style={styles.vendorthumbnail} source={{ uri: rowData.imageURL }}>
+        <Image
+          style={styles.vendorthumbnail}
+          source={{ uri: rowData.imageURL }}
+        >
           <Text style={styles.vendorText}>
             {rowData.name}
+          </Text>
+          <Text>
+            Rating goes here
           </Text>
         </Image>
       </TouchableHighlight>
@@ -77,6 +83,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "white",
     fontSize: 25,
-    textAlignVertical: "bottom"
+    textAlignVertical: "bottom",
+    marginBottom: 5,
+    marginLeft: 10
   }
 });

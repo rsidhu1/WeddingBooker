@@ -5,6 +5,7 @@ import { Icon } from "react-native-elements";
 import CategoryView from "../screens/CategoryView";
 import VendorListView from "../screens/VendorListView";
 import VendorProfile from "../screens/VendorProfile";
+import Chat from "../components/Messenger/Chat";
 import Bookings from "../screens/Bookings";
 import Messages from "../screens/Messages";
 import Settings from "../screens/Settings";
@@ -99,6 +100,12 @@ export const CategoryStack = StackNavigator(
       screen: VendorProfile,
       navigationOptions: {
         title: "Profile"
+      }
+    },
+    Chat: {
+      screen: Chat,
+      navigationOptions: {
+        title: "Chat"
       }
     }
   },

@@ -2,7 +2,13 @@
 
 import React, { Component } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
-import { List, ListItem, Tile, SocialIcon } from "react-native-elements";
+import {
+  List,
+  ListItem,
+  Tile,
+  SocialIcon,
+  Button
+} from "react-native-elements";
 
 export default class VendorProfile extends Component {
   constructor(props) {
@@ -18,6 +24,9 @@ export default class VendorProfile extends Component {
       something: "cuck"
     });
   };
+  _goToChat = vendorData => {
+    this.props.navigation.navigate("Chat", vendorData);
+  };
 
   render() {
     const { name, imageURL, key } = this.props.navigation.state.params; //bring in vendorListProfile data
@@ -26,9 +35,10 @@ export default class VendorProfile extends Component {
       <ScrollView style={styles.container}>
         <Tile
           imageSrc={{ uri: imageURL }}
-          featured
+          caption
           title={this.state.something}
-          onPress={() => this.testSomething()}
+          titleStyle={styles.vendorImageTitle}
+          onPress={() => this.testSomething(this.state.somethign)}
           style={styles.mainImage}
         />
 
@@ -36,6 +46,12 @@ export default class VendorProfile extends Component {
           <ListItem title="Photo Gallery" />
           <ListItem title="Reviews" />
         </List>
+
+        <Button
+          raised
+          title="MESSAGE FOR QUOTE"
+          onPress={() => this._goToChat()}
+        />
 
         <List>
           <SocialIcon title="Instagram" button type="instagram" />
@@ -65,5 +81,6 @@ const styles = StyleSheet.create({
   mainImageText: {
     flex: 1,
     color: "white"
-  }
+  },
+  vendorImageTitle: {}
 });
